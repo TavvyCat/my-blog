@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Aux from '../../HOC/AuxComp/Aux';
+import Aux from '../../Components/HOC/AuxComp';
 
 class Gallery extends Component {
   render() {
