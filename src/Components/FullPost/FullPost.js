@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { storage } from '../../Firebase/Firebase';
+import Aux from '../HOC/AuxComp';
 import Paragraph from '../UI/Paragraph/Paragraph';
 
 class FullPost extends Component {
@@ -22,14 +23,9 @@ class FullPost extends Component {
 
   render() {
     return (
-      <div className="BlogPreview">
-        <div>
-          <img src={this.state.imgURL} alt="" />
-        </div>
-        <h3>{this.props.title}</h3>
-        <p className="line-clamp">{this.props.content}</p>
-        <h4>Posted {this.props.date}</h4>
-      </div>
+      <Aux>
+
+      </Aux>
     )
   }
 }
