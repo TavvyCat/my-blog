@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Axios from '../../Axios';
 import './QuoteOfTheWeek.css';
-import Aux from '../../HOC/AuxComp/Aux';
+import Aux from '../../Components/HOC/AuxComp';
 
 class QuoteOfTheWeek extends Component {
   constructor () {
