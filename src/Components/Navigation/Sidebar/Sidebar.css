@@ -1,0 +1,32 @@
+.Sidebar {
+  width: 60%;
+  height: 100%;
+  position: fixed;
+  background-color: white;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-out;
+}
+.Open {
+  transform: translateX(0);
+}
+.Closed {
+  transform: translateX(-100%);
+}
+.SidebarNavigationItems {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.SidebarNavigationItems * {
+  padding: 20px 20px;
+}
+
+@media (min-width: 500px) {
+  .Sidebar {
+    display: none;
+  }
+}
