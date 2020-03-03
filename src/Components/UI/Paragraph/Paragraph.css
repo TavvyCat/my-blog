@@ -1,0 +1,28 @@
+.Paragraph img {
+  width: 20vw;
+  height: auto;
+  border-radius: 50%;
+  margin: 20px;
+}
+.Paragraph img.Left {
+  float: left;
+  clear: left;
+}
+.Paragraph img.Right {
+  float: right;
+  clear: right;
+}
+.Paragraph h2, h3 {
+  font-family: "Lobster", cursive;
+  justify-content: center;
+}
+.Paragraph h2.Left, h3.Left {
+  clear: right;
+}
+.Paragraph h2.Right, h3.Right {
+  clear: left;
+}
+.Paragraph p.Right {
+  text-align: right;
+  clear: left;
+}
