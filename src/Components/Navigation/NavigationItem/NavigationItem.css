@@ -1,0 +1,18 @@
+.NavigationItem {
+  box-sizing: border-box;
+  display: flex;
+  text-decoration: none;
+  color: Black;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  text-align: center;
+}
+
+.NavigationItem:hover,
+.NavigationItem:active,
+.NavigationItem.active {
+  border-bottom: 3px solid olivedrab;
+}

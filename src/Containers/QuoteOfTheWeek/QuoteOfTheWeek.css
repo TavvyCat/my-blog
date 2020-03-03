@@ -1,0 +1,45 @@
+.FullQuote {
+  border: 5px groove rgb(12, 180, 172);
+  box-shadow: 0 10px 15pxpx grey;
+  margin: 10px;
+  margin-bottom: 100px;
+}
+.FullQuote h1 {
+  text-align: right;
+  margin-right: 20px;
+}
+.FullQuote p {
+  text-align: center;
+  color: black;
+  font-size: 2em;
+}
+
+.PreviousQuote {
+  display: inline-block;
+  width: 45%;
+  border: 3px groove rgb(255, 60, 63);
+  margin: 1%;
+}
+.PreviousQuote h1 {
+  text-align: right;
+  margin-right: 15px;
+  font-size: 1.25em;
+}
+.PreviousQuote p{
+  text-align: center;
+  color: black;
+  font-size: 1.5em;
+}
+
+.PreviousQuotes {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 500px) {
+  .PreviousQuote {
+    width: 90%;
+  }
+}

@@ -1,0 +1,53 @@
+[debug] [2020-02-12T23:07:50.935Z] ----------------------------------------------------------------------
+[debug] [2020-02-12T23:07:50.942Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\TavvyCat\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2020-02-12T23:07:50.943Z] CLI Version:   7.13.0
+[debug] [2020-02-12T23:07:50.943Z] Platform:      win32
+[debug] [2020-02-12T23:07:50.943Z] Node Version:  v12.13.1
+[debug] [2020-02-12T23:07:50.946Z] Time:          Wed Feb 12 2020 15:07:50 GMT-0800 (Pacific Standard Time)
+[debug] [2020-02-12T23:07:50.946Z] ----------------------------------------------------------------------
+[debug] [2020-02-12T23:07:50.946Z] 
+[debug] [2020-02-12T23:07:50.973Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-02-12T23:07:50.976Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\TavvyCat\Desktop\Coding\UdemyReact\my-blog
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2020-02-12T23:08:29.113Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-02-12T23:08:29.114Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-02-12T23:08:29.691Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-12T23:08:29.828Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects?pageSize=100  
+ 
+[debug] [2020-02-12T23:08:30.656Z] <<< HTTP RESPONSE 200
+[info] i  Using project adventure-blog-286e8 (adventure-blog)
+[info] 
+=== Database Setup
+[info] 
+[info] Firebase Realtime Database Rules allow you to define how your data should be
+[info] structured and when your data can be read from and written to.
+[info] 
+[debug] [2020-02-12T23:08:52.275Z] >>> HTTP REQUEST GET https://adventure-blog-286e8.firebaseio.com/.settings/rules.json  
+ 
+[debug] [2020-02-12T23:08:52.942Z] <<< HTTP RESPONSE 200
+[debug] [2020-02-12T23:08:53.238Z] Error: EISDIR: illegal operation on a directory, open 'C:\Users\TavvyCat\Desktop\Coding\UdemyReact\my-blog'
+    at Object.openSync (fs.js:440:3)
+    at Object.writeFileSync (fs.js:1265:35)
+    at Config.writeProjectFile (C:\Users\TavvyCat\AppData\Roaming\npm\node_modules\firebase-tools\lib\config.js:179:8)
+    at C:\Users\TavvyCat\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\database.js:25:23
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[error] 
+[error] Error: An unexpected error has occurred.
