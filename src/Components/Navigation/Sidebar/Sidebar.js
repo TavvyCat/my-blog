@@ -1,6 +1,6 @@
 import React from 'react';
 import './Sidebar.css';
-import Aux from '../../../HOC/AuxComp/Aux';
+import Aux from '../../HOC/AuxComp';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import NavigationItems from '../NavigationItems/NavigationItems';
 
