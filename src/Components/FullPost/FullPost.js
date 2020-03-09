@@ -15,9 +15,8 @@ class FullPost extends Component {
 
   shouldComponentUpdate (nextProps, nextState) {
     console.log("should component update")
-    console.log(this.state)
-    if (!this.state.data 
-      || this.state.data !== nextState.state.data) {
+    console.log(this.props.location.state)
+    if (this.props.location.state !== nextProps.location.state) {
       console.log("true")
       return true;
     } else {
@@ -45,7 +44,6 @@ class FullPost extends Component {
       .catch(error => console.log(error));
     }
     this.setState({data: dataState, imgURLs: images});
-    console.log(this.state)
   }
 
   render() {
