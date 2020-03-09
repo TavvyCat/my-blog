@@ -5,14 +5,12 @@ import Blog from '../Blog/Blog';
 import Forum from '../Forum/Forum';
 import Gallery from '../Gallery/Gallery';
 import QuoteOfTheWeek from '../QuoteOfTheWeek/QuoteOfTheWeek';
-import FullPost from '../../Components/FullPost/FullPost';
 
 const MainContentHandler = () => (
   <div style={{width: "100%", textAlign: "center"}}>
     <Switch>
-      <Route path="/blog/:id" component={FullPost} />
       <Route path="/our-story" component={OurStory} />
-      <Route path="/blog" exact component={Blog} />
+      <Route path="/blog" component={Blog} />
       <Route path="/gallery" component={Gallery} />
       <Route path="/quote-of-the-week" component={QuoteOfTheWeek} />
       <Route path="/forum" component={Forum} />
