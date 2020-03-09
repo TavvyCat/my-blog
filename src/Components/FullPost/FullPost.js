@@ -14,7 +14,9 @@ class FullPost extends Component {
   }
 
   shouldComponentUpdate (nextProps, nextState) {
-    if (nextProps !== this.props) {
+    console.log(this.props, this.state)
+    console.log(nextProps, nextState)
+    if (nextProps.location.state !== this.props.location.state) {
       return true;
     } else {
       return false;
