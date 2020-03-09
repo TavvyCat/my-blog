@@ -26,3 +26,10 @@
   text-align: right;
   clear: left;
 }
+
+@media (max-width: 500px) {
+  .Paragraph img {
+    width: 40vw;
+    margin: 10px;
+  }
+}
