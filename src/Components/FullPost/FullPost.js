@@ -3,32 +3,39 @@ import { storage } from '../../Firebase/Firebase';
 import Aux from '../HOC/AuxComp';
 
 class FullPost extends Component { 
-  state = {
-    data: null,
-    imgURLs: null
-  }
-
-  componentDidMount () {
+  constructor (props) {
+    super (props);
+    console.log("constructor");
     this.getData();
+  }
+  state = {
+    data: {},
+    imgURLs: []
   }
 
   shouldComponentUpdate (nextProps, nextState) {
-    console.log(this.props, this.state)
-    console.log(nextProps, nextState)
-    if (nextProps.location.state.title !== this.props.location.state.title) {
+    console.log("should component update")
+    console.log(this.state)
+    if (!this.state.data 
+      || this.state.data !== nextState.state.data) {
+      console.log("true")
       return true;
     } else {
+      console.log("false")
       return false;
     }
   }
 
   componentWillUpdate () {
-      this.getData();
+    console.log("component will update")
+    this.getData();
   }
 
   async getData () {
+    console.log("get data")
     const obj = this.props.location.state.images;
     const images = new Array(0);
+    console.log(this.props.location.state)
     const dataState = {...this.props.location.state};
     for (let key in obj) {
       await storage.ref(obj[key].file).child(obj[key].imageName).getDownloadURL()
@@ -38,6 +45,7 @@ class FullPost extends Component {
       .catch(error => console.log(error));
     }
     this.setState({data: dataState, imgURLs: images});
+    console.log(this.state)
   }
 
   render() {
