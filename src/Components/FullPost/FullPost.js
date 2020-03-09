@@ -9,25 +9,21 @@ class FullPost extends Component {
   }
 
   componentDidMount () {
-    console.log("Component did mount");
     this.getData();
   }
 
   shouldComponentUpdate (nextProps, nextState) {
     console.log(this.props, this.state)
     console.log(nextProps, nextState)
-    if (nextProps.location.state !== this.props.location.state) {
+    if (nextProps.location.state.title !== this.props.location.state.title) {
       return true;
     } else {
       return false;
     }
   }
 
-  componentDidUpdate (nextProps, nextState) {
-    console.log("component did update");
-    if (this.state !== nextState) {
+  componentDidUpdate () {
       this.getData();
-    }
   }
 
   async getData () {
