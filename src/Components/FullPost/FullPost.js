@@ -3,21 +3,20 @@ import { storage } from '../../Firebase/Firebase';
 import Aux from '../HOC/AuxComp';
 
 class FullPost extends Component { 
-  constructor (props) {
-    super (props);
-    console.log("constructor");
-    this.getData();
-  }
   state = {
     data: {},
     imgURLs: []
   }
 
+  componentDidMount () {
+    this.getData();
+  }
+
   shouldComponentUpdate (nextProps, nextState) {
     console.log("should component update")
-    console.log(this.props.location.state)
-    console.log(nextProps.location.state)
-    if (this.props.location.state !== nextProps.location.state) {
+    console.log(this.state)
+    console.log(nextState)
+    if (this.state !== nextState) {
       console.log("true")
       return true;
     } else {
@@ -26,8 +25,8 @@ class FullPost extends Component {
     }
   }
 
-  componentWillUpdate () {
-    console.log("component will update")
+  componentDidUpdate () {
+    console.log("component did update")
     this.getData();
   }
 
