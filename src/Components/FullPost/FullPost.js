@@ -22,7 +22,7 @@ class FullPost extends Component {
     }
   }
 
-  componentDidUpdate () {
+  componentWillUpdate () {
       this.getData();
   }
 
