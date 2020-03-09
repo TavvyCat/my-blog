@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 import Axios from '../../Axios';
 import BlogPreview from '../../Components/BlogPreview/BlogPreview';
+import FullPost from '../../Components/FullPost/FullPost';
 
 class Blog extends Component {
   constructor (props) {
@@ -29,18 +30,39 @@ class Blog extends Component {
       .catch(error => console.log(error));
   }
 
+  getDate (post) {
+    return post.date;
+  }
+
+  sortByDate (getDate, posts) {
+    return posts.sort(function (a, b) {
+        let A = getDate(a);
+        let B = getDate(b);
+
+        if (A < B) {
+            return -1;
+        } else if (A > B) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+  };
+
   render() {
+    const posts = this.sortByDate(this.getDate, this.state.data)
     return (
       <div className="Blog">
-        {this.state.data.map(blog => (
+        <Route path="/blog/:id" component={FullPost} />
+        {posts.map(blog => (
           <NavLink 
+            style={{textDecoration: "none", color: "black"}}
             to={{
               pathname: `${this.props.match.url}/${blog.link}`,
-              aboutProps: {
+              state: {
                 title: blog.title,
                 content: blog.content,
-                imgFile: blog.images.titleImage.file,
-                imgName: blog.images.titleImage.imageName,
+                images: blog.images,
                 date: blog.date
               }
             }}
@@ -48,8 +70,8 @@ class Blog extends Component {
             <BlogPreview 
               title={blog.title}
               content={blog.content}
-              imgFile={blog.images.titleImage.file}
-              imgName={blog.images.titleImage.imageName}
+              imgFile={blog.images.aTitleImage.file}
+              imgName={blog.images.aTitleImage.imageName}
               date={blog.date}/>
           </NavLink>
         ))}
