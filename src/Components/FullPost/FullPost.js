@@ -16,18 +16,14 @@ class FullPost extends Component {
     console.log("should component update")
     console.log(this.state)
     console.log(nextState)
-    if (this.state !== nextState) {
+    if (this.state.data !== nextState.data) {
       console.log("true")
+      this.getData();
       return true;
     } else {
       console.log("false")
       return false;
     }
-  }
-
-  componentDidUpdate () {
-    console.log("component did update")
-    this.getData();
   }
 
   async getData () {
