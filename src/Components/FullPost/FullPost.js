@@ -3,35 +3,40 @@ import { storage } from '../../Firebase/Firebase';
 import Aux from '../HOC/AuxComp';
 
 class FullPost extends Component { 
-  state = {
-    data: {},
-    imgURLs: []
-  }
-
-  componentDidMount () {
-    this.getData();
-  }
-
-  shouldComponentUpdate (nextProps, nextState) {
-    console.log("should component update")
-    console.log(this.state)
-    console.log(nextState)
-    if (this.state.data !== nextState.data) {
-      console.log("true")
-      this.getData();
-      return true;
-    } else {
-      console.log("false")
-      return false;
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: this.props.location.state, 
+      imgURLs: null
     }
   }
 
-  async getData () {
-    console.log("get data")
+  componentDidMount () {
+    console.log(this.state)
+    this.getImages();
+  }
+
+  // shouldComponentUpdate (nextProps, nextState) {
+  //   console.log("should component update")
+  //   console.log(this.state)
+  //   console.log(nextState)
+  //   if (this.state.data !== nextState.data) {
+  //     console.log("true")
+  //     this.getData();
+  //     return true;
+  //   } else {
+  //     console.log("false")
+  //     return false;
+  //   }
+  // }
+
+  componentDidUpdate() {
+    console.log("component did update")
+  }
+
+  async getImages () {
     const obj = this.props.location.state.images;
     const images = new Array(0);
-    console.log(this.props.location.state)
-    const dataState = {...this.props.location.state};
     for (let key in obj) {
       await storage.ref(obj[key].file).child(obj[key].imageName).getDownloadURL()
       .then(response => {
@@ -39,7 +44,7 @@ class FullPost extends Component {
       })
       .catch(error => console.log(error));
     }
-    this.setState({data: dataState, imgURLs: images});
+    this.setState({ imgURLs: images })
   }
 
   render() {
