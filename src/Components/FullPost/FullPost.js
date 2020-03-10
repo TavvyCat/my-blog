@@ -7,36 +7,34 @@ class FullPost extends Component {
     super(props);
     this.state = {
       data: this.props.location.state, 
-      imgURLs: null
+      imgURLs: []
     }
   }
 
   componentDidMount () {
-    console.log(this.state)
-    this.getImages();
+    this.getData();
   }
 
-  // shouldComponentUpdate (nextProps, nextState) {
-  //   console.log("should component update")
-  //   console.log(this.state)
-  //   console.log(nextState)
-  //   if (this.state.data !== nextState.data) {
-  //     console.log("true")
-  //     this.getData();
-  //     return true;
-  //   } else {
-  //     console.log("false")
-  //     return false;
-  //   }
-  // }
+  shouldComponentUpdate (nextProps, nextState) {
+    console.log(this.props.location.state);
+    console.log(nextProps.location.state);
+    if (this.props.location.state !== nextProps.location.state) {
+      console.log("true");
+      return true;
+    } else {
+      console.log("false");
+      return false;
+    }
+  }
 
   componentDidUpdate() {
     console.log("component did update")
   }
 
-  async getImages () {
+  async getData () {
+    const data = {...this.props.location.data};
     const obj = this.props.location.state.images;
-    const images = new Array(0);
+    const images = this.state.imgURLs;
     for (let key in obj) {
       await storage.ref(obj[key].file).child(obj[key].imageName).getDownloadURL()
       .then(response => {
@@ -44,13 +42,13 @@ class FullPost extends Component {
       })
       .catch(error => console.log(error));
     }
-    this.setState({ imgURLs: images })
+    this.setState({ data: data, imgURLs: images })
   }
 
   render() {
     let post = this.state.imgURLs && this.state.data ? (
       <Aux>
-        <img src={this.state.imgURLs.shift()} alt="" style={{width: "50vw", height: "auto", marginTop: "20px"}}/>
+        <img src={this.state.imgURLs[0]} alt="" style={{width: "50vw", height: "auto", marginTop: "20px"}}/>
         <h2 style={{fontSize: "32px", fontFamily: "cursive"}}>{this.state.data.title}</h2>
         <h5>{this.state.data.date}</h5>
         <p style={{lineHeight: "2", margin: "20px"}}>{this.state.data.content}</p> 
