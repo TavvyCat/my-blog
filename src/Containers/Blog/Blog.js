@@ -17,12 +17,14 @@ class Blog extends Component {
   getData () {
     Axios.get('/blog.json')
       .then(response => {
+        console.log(response);
         const data = [];
         for (let blog in response.data) {
           data.push({
             ...response.data[blog]
           })
         }
+        console.log(data)
         this.setState({
           data: data
         });
@@ -70,8 +72,7 @@ class Blog extends Component {
             <BlogPreview 
               title={blog.title}
               content={blog.content}
-              imgFile={blog.images.aTitleImage.file}
-              imgName={blog.images.aTitleImage.imageName}
+              images={blog.images}
               date={blog.date}/>
           </NavLink>
         ))}
