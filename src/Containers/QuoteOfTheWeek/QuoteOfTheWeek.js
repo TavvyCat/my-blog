@@ -1,67 +1,50 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import withErrorHandler from '../../HOC/withErrorHandler/withErrorHandler';
 import Axios from '../../Axios';
 import './QuoteOfTheWeek.css';
-import Aux from '../../Components/HOC/AuxComp';
+import Aux from '../../HOC/AuxComp/AuxComp';
+import * as actions from '../../store/actions/index';
 
 class QuoteOfTheWeek extends Component {
-  constructor () {
-    super();
-    this.getData();
+  componentDidMount() {
+    this.props.onFetchQuotes();
   }
-
-  state = {
-    quotes: {
-      currentQuote: "",
-      previousQuotes: []
-    }
-  }
-
-  getData () {
-    Axios.get('/quotes.json')
-      .then(response => {
-        console.log(response);
-        const currentQuote = response.data.currentQuote.quote;
-        const previousQuotes = [];
-        for (let key in response.data.previousQuotes) {
-          previousQuotes.push({
-            ...response.data.previousQuotes[key],
-            id: key
-          });
-        }
-        this.setState({
-          quotes: {
-            currentQuote: currentQuote,
-            previousQuotes: previousQuotes
-          }
-        });
-        console.log(this.state)
-      })
-      .catch(error => console.log(error));
-  }
-
 
   render() {
-    console.log(this.state);
-
-    return (
+    let quotes = this.props.currentQuote && this.props.previousQuotes ? (
       <Aux>
-        <h1 >Quote of the Week</h1>
-        <div className="FullQuote">
-          <p>&ldquo;  {this.state.quotes.currentQuote.quote}  &rdquo;</p>
-          <h1>- {this.state.quotes.currentQuote.person}</h1>
-        </div>
-        <h2 >Previous Quotes</h2>
-        <div className="PreviousQuotes">
-          {this.state.quotes.previousQuotes.map(quote => (
-            <div className="PreviousQuote" key={quote.id}>
-              <p>&ldquo;  {quote.quote}  &rdquo;</p>
-              <h1>- {quote.person}</h1>
-            </div>
-          ))}
-        </div>
+          <h1 >Quote of the Week</h1>
+          <div className="FullQuote">
+              <p>&ldquo;  {this.props.currentQuote.quote.quote}  &rdquo;</p>
+              <h1>- {this.props.currentQuote.quote.person}</h1>
+          </div>
+          <h2 >Previous Quotes</h2>
+          <div className="PreviousQuotes">
+              {this.props.previousQuotes.map(quote => (
+                  <div className="PreviousQuote" key={quote.id}>
+                      <p>&ldquo;  {quote.quote}  &rdquo;</p>
+                      <h1>- {quote.person}</h1>
+                  </div>
+            ))}
+          </div>
       </Aux>
-    )
+    ) : null;
+    return quotes;
   }
 }
 
-export default QuoteOfTheWeek;
+const mapStateToProps = (state) => {
+  return {
+    currentQuote: state.currentQuote,
+    previousQuotes: state.previousQuotes,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFetchQuotes: () => dispatch(actions.fetchQuoteData())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(QuoteOfTheWeek, Axios));

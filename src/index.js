@@ -8,21 +8,10 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import reducer from './store/reducer';
-
-const logger = store => {
-    return next => {
-        return action => {
-            console.log('[MiddleWare] Dispatching', action);
-            const result = next(action);
-            console.log('[MiddleWare] next state', store.getState());
-            return result;
-        }
-    }
-}
-
+ 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducer, composeEnhancers(applyMiddleware(logger, thunk)));
+const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
 
 ReactDOM.render(
