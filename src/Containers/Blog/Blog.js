@@ -1,35 +1,15 @@
 import React, { Component } from 'react';
 import { NavLink, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Axios from '../../Axios';
+import withErrorHandler from '../../HOC/withErrorHandler/withErrorHandler';
 import BlogPreview from '../../Components/BlogPreview/BlogPreview';
 import FullPost from '../../Components/FullPost/FullPost';
+import * as actions from '../../store/actions/index';
 
 class Blog extends Component {
-  constructor (props) {
-    super(props);
-    this.getData();
-  }
-
-  state = {
-    data: []
-  }
-
-  getData () {
-    Axios.get('/blog.json')
-      .then(response => {
-        console.log(response);
-        const data = [];
-        for (let blog in response.data) {
-          data.push({
-            ...response.data[blog]
-          })
-        }
-        console.log(data)
-        this.setState({
-          data: data
-        });
-      })
-      .catch(error => console.log(error));
+  componentDidMount() {
+    this.props.onFetchBlogData();
   }
 
   getDate (post) {
@@ -52,33 +32,48 @@ class Blog extends Component {
   };
 
   render() {
-    const posts = this.sortByDate(this.getDate, this.state.data)
+    const posts = this.props.blogData ? this.sortByDate(this.getDate, this.props.blogData) : null;
+    const postsEl = posts ? 
+      posts.map(blog => (
+        <NavLink 
+          style={{textDecoration: "none", color: "black"}}
+          to={{
+            pathname: `${this.props.match.url}/${blog.link}`,
+            state: {
+              title: blog.title,
+              content: blog.content,
+              images: blog.images,
+              date: blog.date
+            }
+          }}
+          key={blog.title}>
+          <BlogPreview 
+            title={blog.title}
+            content={blog.content}
+            images={blog.images}
+            date={blog.date}/>
+        </NavLink>
+      )) : null;
+    console.log(postsEl);
     return (
       <div className="Blog">
         <Route path="/blog/:id" component={FullPost} />
-        {posts.map(blog => (
-          <NavLink 
-            style={{textDecoration: "none", color: "black"}}
-            to={{
-              pathname: `${this.props.match.url}/${blog.link}`,
-              state: {
-                title: blog.title,
-                content: blog.content,
-                images: blog.images,
-                date: blog.date
-              }
-            }}
-            key={blog.title}>
-            <BlogPreview 
-              title={blog.title}
-              content={blog.content}
-              images={blog.images}
-              date={blog.date}/>
-          </NavLink>
-        ))}
+        {postsEl}
       </div>
     )
   }
 }
 
-export default Blog;
+const mapStateToProps = (state) => {
+  return {
+    blogData: state.blogData
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onFetchBlogData: () => dispatch(actions.fetchBlogData())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Blog, Axios));
