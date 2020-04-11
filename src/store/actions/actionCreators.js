@@ -14,10 +14,10 @@ export const fetchBlogData = () => {
         .then(response => {
             const data = [];
             for (let blog in response.data) {
-            data.push({
-                ...response.data[blog]
-            })
-            }
+                data.push({
+                    ...response.data[blog]
+                })
+                }
             dispatch(fetchBlogDataSuccess(data));
         })
         .catch(error => console.log(error));
@@ -65,9 +65,9 @@ export const fetchGalleryData = () => {
             for (let key in response.data) {
                 images.push({
                     ...response.data[key]
-            });
-            dispatch(fetchGalleryDataSuccess(images));
-        }})
+            })};
+        dispatch(fetchGalleryDataSuccess(images));
+    })
         .catch(error => console.log(error))
     }
 }
