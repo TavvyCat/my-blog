@@ -1,0 +1,21 @@
+.FullPost p {
+    margin: 20px 10vw;
+    line-height: 2;
+}
+.FullPost img {
+    width: 50vw;
+    height: auto; 
+    margin-top: 20px;
+}
+.FullPost h2 {
+    margin-bottom: 20px;
+    font-size: 4vw; 
+    font-family: cursive;
+}
+.FullPost h5 {
+    font-size: 2vw; 
+    margin-bottom: 50px;
+}
+.FullPost {
+    white-space: pre-wrap;
+  } 

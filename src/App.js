@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
+import MainContentHandler from './Containers/MainContentHandler/MainContentHandler';
+import Admin from './Containers/Admin/Admin';
 import Menu from './Components/Navigation/Menu/Menu';
 import Sidebar from './Components/Navigation/Sidebar/Sidebar';
-import MainContentHandler from './Containers/MainContentHandler/MainContentHandler';
 
 class App extends Component {
   state = {
@@ -25,7 +27,10 @@ class App extends Component {
           showSidebar={this.state.showSidebar}
           clicked={() => this.sidebarToggleHandler()} />
         <main>
-          <MainContentHandler />
+          <Switch>
+            <Route path="/admin" component={Admin} />
+            <Route path="/"component={MainContentHandler} />
+          </Switch>
         </main>
       </div>
     );

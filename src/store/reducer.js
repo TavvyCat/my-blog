@@ -6,7 +6,10 @@ const initialState = {
     currentQuote: null,
     previousQuotes: [],
     galleryData: [],
-    loading: false
+    loading: false,
+    blogSubmission: {
+        
+    }
 };
 
 const reducer = ( state = initialState, action ) => {
