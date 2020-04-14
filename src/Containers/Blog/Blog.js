@@ -54,7 +54,6 @@ class Blog extends Component {
             date={blog.date}/>
         </NavLink>
       )) : null;
-    console.log(postsEl);
     return (
       <div className="Blog">
         <Route path="/blog/:id" component={FullPost} />
