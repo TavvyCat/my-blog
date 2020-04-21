@@ -71,3 +71,37 @@ export const fetchGalleryData = () => {
         .catch(error => console.log(error))
     }
 }
+
+// POST BLOG
+export const postBlogSuccess = () => {
+    return {
+        type: actionTypes.POST_BLOG_SUCCESS
+    }
+}
+export const postBlog = (blogData) => {
+    return dispatch => {
+       Axios.post(`/blog.json`, blogData)
+       .then(response => {
+           if (response.status >= 200) {
+               dispatch(postBlogSuccess());
+           }
+       })
+       .catch(error => {
+           console.log(error);
+       });
+    }
+}
+
+// ADMIN STATE
+export const changeAdminState = (newState) => {
+    return {
+        type: actionTypes.CHANGE_ADMIN_STATE,
+        newState: newState
+    }
+}
+export const changeImageUpload = (image) => {
+    return {
+        type: actionTypes.CHANGE_IMAGE_UPLOAD,
+        image: image
+    }
+}

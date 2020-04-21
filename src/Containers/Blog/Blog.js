@@ -42,15 +42,16 @@ class Blog extends Component {
             state: {
               title: blog.title,
               content: blog.content,
-              images: blog.images,
+              titleImage: blog.titleImage,
+              otherImages: blog.otherImages,
               date: blog.date
             }
           }}
           key={blog.title}>
           <BlogPreview 
             title={blog.title}
+            titleImage={blog.titleImage}
             content={blog.content}
-            images={blog.images}
             date={blog.date}/>
         </NavLink>
       )) : null;

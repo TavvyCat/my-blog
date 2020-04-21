@@ -7,9 +7,15 @@ const initialState = {
     previousQuotes: [],
     galleryData: [],
     loading: false,
-    blogSubmission: {
-        
-    }
+    adminState: {
+        title: "My Blog",
+        link: "my-blog",
+        content: "Lorem Ipsum...",
+        titleImage: "",
+        otherImages: [],
+        date: `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`
+    },
+    imageUpload: null
 };
 
 const reducer = ( state = initialState, action ) => {
@@ -22,7 +28,14 @@ const reducer = ( state = initialState, action ) => {
                 previousQuotes: action.previousQuotes,
             });
         case actionTypes.FETCH_GALLERY_DATA_SUCCESS:
-            return updateObject(state, { galleryData: action.data })
+            return updateObject(state, { galleryData: action.data });
+        case actionTypes.CHANGE_ADMIN_STATE:
+            return updateObject(state, {adminState: action.newState});
+        case actionTypes.CHANGE_IMAGE_UPLOAD:
+            return updateObject(state, {imageUpload: action.image});
+        case actionTypes.POST_BLOG_SUCCESS:
+            alert("Post successful!");
+            return updateObject(state, {adminState: {...state.adminState, titleImage: "", otherImages: []}});
         default: return state;
     }
 };

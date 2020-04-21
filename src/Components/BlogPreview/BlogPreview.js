@@ -4,7 +4,7 @@ import './BlogPreview.css';
 const BlogPreview = props => (
   <div className="BlogPreview">
     <div>
-      <img src={props.images._titleImage} alt="" />
+      <img src={props.titleImage} alt="" />
     </div>
     <h3>{props.title}</h3>
     <p className="line-clamp">{props.content}</p>

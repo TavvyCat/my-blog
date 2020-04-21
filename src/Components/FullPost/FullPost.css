@@ -2,7 +2,7 @@
     margin: 20px 10vw;
     line-height: 2;
 }
-.FullPost img {
+.FullPost.TitleImage {
     width: 50vw;
     height: auto; 
     margin-top: 20px;
@@ -18,4 +18,13 @@
 }
 .FullPost {
     white-space: pre-wrap;
-  } 
+}
+
+.OtherImage {
+    height: 200px;
+    width: auto;
+}
+.OtherImages {
+    display: flex;
+    flex-direction: row;
+}
