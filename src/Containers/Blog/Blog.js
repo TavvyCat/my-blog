@@ -5,6 +5,7 @@ import Axios from '../../Axios';
 import withErrorHandler from '../../HOC/withErrorHandler/withErrorHandler';
 import BlogPreview from '../../Components/BlogPreview/BlogPreview';
 import FullPost from '../../Components/FullPost/FullPost';
+import Classes from './Blog.css';
 import * as actions from '../../store/actions/index';
 
 class Blog extends Component {
@@ -56,7 +57,7 @@ class Blog extends Component {
         </NavLink>
       )) : null;
     return (
-      <div className="Blog">
+      <div className={Classes.Blog}>
         <Route path="/blog/:id" component={FullPost} />
         {postsEl}
       </div>

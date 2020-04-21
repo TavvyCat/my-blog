@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Gallery.css'
+import Classes from './Gallery.css';
 import withErrorHandler from '../../HOC/withErrorHandler/withErrorHandler';
 import Axios from '../../Axios';
 import * as actions from '../../store/actions/index';
@@ -23,11 +23,11 @@ class Gallery extends Component {
   render() {
     const shuffledImages = this.props.images ? this.shuffleArray(this.props.images) : null;
     const images = shuffledImages ? (
-      <div className="Gallery">
+      <div className={Classes.Gallery}>
         {shuffledImages.map(image => (
-          <div className="GalleryImageContainer" key={image.imgURL}
+          <div className={Classes.GalleryImageContainer} key={image.imgURL}
             style={{width: `${image.width}px`}}>
-            <img className="GalleryImage" src={image.imgURL} alt=" "/>
+            <img className={Classes.GalleryImage} src={image.imgURL} alt=" "/>
           </div>
         ))}
       </div>

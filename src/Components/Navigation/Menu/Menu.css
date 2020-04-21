@@ -12,7 +12,7 @@
   display: none;
 }
 
-.sidebar-opener {
+.sidebarOpener {
   display: inline-block;
   justify-content: left;
 }
@@ -23,7 +23,7 @@
 }
 
 @media (min-width: 500px) {
-  .sidebar-opener {
+  .sidebarOpener {
     display: none;
   }
   .MenuNavigationItems {

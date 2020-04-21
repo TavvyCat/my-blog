@@ -1,15 +1,15 @@
 import React from 'react';
-import './Sidebar.css';
+import Classes from './Sidebar.css';
 import Aux from '../../../HOC/AuxComp/AuxComp';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import NavigationItems from '../NavigationItems/NavigationItems';
 
 const Sidebar = (props) => {
-  let classes = ["Sidebar"];
+  let classes = [Classes.Sidebar];
   if (props.showSidebar) {
-    classes.push('Opened');
+    classes.push(Classes.Opened);
   } else {
-    classes.push('Closed');
+    classes.push(Classes.Closed);
   }
 
   return (

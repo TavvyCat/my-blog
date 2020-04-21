@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { storage } from '../../firebase';
 import Axios from '../../Axios';
-import './Admin.css';
+import classes from './Admin.css';
 import withErrorHandler from '../../HOC/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
 import { updateObject } from '../../store/utility';
@@ -80,7 +80,7 @@ class Admin extends Component {
         // const uploadedImage = this.state.URL ? 
         //     <img src={this.state.URL} alt="Uploaded File" /> : null;
         return (
-            <div className="AdminForm">
+            <div className={classes.AdminForm}>
                 <label>
                     Images:
                     {progressBar}

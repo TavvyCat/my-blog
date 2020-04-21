@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import withErrorHandler from '../../HOC/withErrorHandler/withErrorHandler';
 import Axios from '../../Axios';
-import './QuoteOfTheWeek.css';
+import Classes from'./QuoteOfTheWeek.css';
 import Aux from '../../HOC/AuxComp/AuxComp';
 import * as actions from '../../store/actions/index';
 
@@ -15,14 +15,14 @@ class QuoteOfTheWeek extends Component {
     let quotes = this.props.currentQuote && this.props.previousQuotes ? (
       <Aux>
           <h1 >Quote of the Week</h1>
-          <div className="FullQuote">
+          <div className={Classes.FullQuote}>
               <p>&ldquo;  {this.props.currentQuote.quote.quote}  &rdquo;</p>
               <h1>- {this.props.currentQuote.quote.person}</h1>
           </div>
           <h2 >Previous Quotes</h2>
-          <div className="PreviousQuotes">
+          <div className={Classes.PreviousQuotes}>
               {this.props.previousQuotes.map(quote => (
-                  <div className="PreviousQuote" key={quote.id}>
+                  <div className={Classes.PreviousQuote} key={quote.id}>
                       <p>&ldquo;  {quote.quote}  &rdquo;</p>
                       <h1>- {quote.person}</h1>
                   </div>

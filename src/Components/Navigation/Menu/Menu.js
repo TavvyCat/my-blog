@@ -1,12 +1,12 @@
 import React from 'react';
 import NavigationItems from '../NavigationItems/NavigationItems';
-import './Menu.css';
+import Classes from './Menu.css';
 
 const Menu = (props) => {
   return (
-    <header className="Menu">
+    <header className={Classes.Menu}>
       <div 
-        className="sidebar-opener"
+        className={Classes.sidebarOpener}
         onClick={props.clicked}>
         <i className="fas fa-bars"></i>
         MENU

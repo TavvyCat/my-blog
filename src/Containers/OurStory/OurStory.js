@@ -1,9 +1,9 @@
 import React from 'react';
-import './OurStory.css';
+import Classes from './OurStory.css';
 import Paragraph from '../../Components/UI/Paragraph/Paragraph';
 
 const OurStory = () => (
-  <div className="OurStory">
+  <div className={Classes.OurStory}>
     <Paragraph 
       imgURL="https://firebasestorage.googleapis.com/v0/b/adventure-blog-286e8.appspot.com/o/OurStory%2FPic-01.jpg?alt=media&token=8bea4bc5-eb7d-4d01-bac6-7291a4a18be5"
       headerType="h2"

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Paragraph.css';
+import Classes from './Paragraph.css';
 
 const Paragraph = (props) => {
     const float = props.float === "right" ? "Right" : "Left";
@@ -14,7 +14,7 @@ const Paragraph = (props) => {
         </h3>
 
     return (
-      <div className="Paragraph">
+      <div className={Classes.Paragraph}>
           <img 
                 className={float} 
                 src={props.imgURL} 
