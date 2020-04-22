@@ -1,14 +1,19 @@
+.Admin {
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
 .AdminForm {
     text-align: center;
     align-items: center;
     display: flex;
     flex-direction: column;
 }
-#AdminForm {
-    text-align: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+
+progress {
+    display: block;
+    margin: 20px;
 }
 
 label {

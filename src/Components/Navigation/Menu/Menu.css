@@ -1,4 +1,5 @@
 .Menu {
+  align-self: flex-start;
   display: flex;
   align-items: stretch;
   justify-content: space-evenly;
@@ -6,6 +7,7 @@
   height: 50px;
   width: 100%;
   flex-direction: row;
+  position: fixed;
 }
 
 .MenuNavigationItems {
@@ -16,7 +18,7 @@
   display: inline-block;
   justify-content: left;
 }
-.fa-bars {
+#bars {
   padding: 20px;
   justify-content: left;
   cursor: pointer;

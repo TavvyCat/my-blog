@@ -27,7 +27,7 @@ class Gallery extends Component {
         {shuffledImages.map(image => (
           <div className={Classes.GalleryImageContainer} key={image.imgURL}
             style={{width: `${image.width}px`}}>
-            <img className={Classes.GalleryImage} src={image.imgURL} alt=" "/>
+            <img className={Classes.GalleryImage} src={image.imgURL} alt=""/>
           </div>
         ))}
       </div>

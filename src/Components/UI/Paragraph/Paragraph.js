@@ -2,16 +2,12 @@ import React from 'react';
 import Classes from './Paragraph.css';
 
 const Paragraph = (props) => {
-    const float = props.float === "right" ? "Right" : "Left";
-    const header = props.headerType === "h2" ? 
+    const float = props.float === "right" ? Classes.Right : Classes.Left;
+    const header = props.headerContent ? 
         <h2 
             className={float}>
             {props.headerContent}
-        </h2> : 
-        <h3 
-            className={float}>
-            {props.headerContent}
-        </h3>
+        </h2> : null
 
     return (
       <div className={Classes.Paragraph}>

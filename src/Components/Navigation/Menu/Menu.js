@@ -8,10 +8,10 @@ const Menu = (props) => {
       <div 
         className={Classes.sidebarOpener}
         onClick={props.clicked}>
-        <i className="fas fa-bars"></i>
+        <i id={Classes.bars}className="fas fa-bars"></i>
         MENU
       </div>
-      <NavigationItems className="MenuNavigationItems"/>
+      <NavigationItems className={Classes.MenuNavigationItems}/>
     </header>
   )
 }

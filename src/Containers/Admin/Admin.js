@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { storage } from '../../firebase';
 import Axios from '../../Axios';
-import classes from './Admin.css';
+import Classes from './Admin.css';
 import withErrorHandler from '../../HOC/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
 import { updateObject } from '../../store/utility';
@@ -45,7 +45,7 @@ class Admin extends Component {
             (snapshot) => {
                 // Progress function
                 const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-                this.setState({ progress })
+                this.setState({ progress });
             }, 
             (error) => {
                 // Error function
@@ -55,8 +55,10 @@ class Admin extends Component {
                 // Complete function
                 storage.ref('Gallery').child(image.name).getDownloadURL()
                 .then(URL => {
+                    const imageData = { imgURL: URL, width: "400"}
+                    const images = [this.props.uploadedImages.push(imageData)];
+                    this.props.onImageUploaded(images);
                     this.imgSelectedHandler(URL);
-                    const imageData = { imgURL: URL}
                     Axios.post('/Gallery.json', imageData);
                 })
             })
@@ -77,21 +79,27 @@ class Admin extends Component {
     render() {
         const progressBar = this.state.progress ? 
             <progress value={this.state.progress} max="100" /> : null;
-        // const uploadedImage = this.state.URL ? 
-        //     <img src={this.state.URL} alt="Uploaded File" /> : null;
+        const uploadedImages = this.props.uploadedImages;
+        const images = this.props.uploadedImages ? (
+            <div>
+                {uploadedImages.map(image => 
+                    <img src={image.imgURL} alt="Uploaded File" key={image.imgURL} />
+                )}
+            </div> 
+        ) : null;
         return (
-            <div className={classes.AdminForm}>
+            <div className={Classes.Admin}>
                 <label>
                     Images:
                     {progressBar}
-                    {/* {uploadedImage} */}
+                    {images}
                     <input 
                         name="imageUpload"
                         type="file" 
                         onChange={this.inputChangeHandler} />
                     <button onClick={this.imgUploadHandler}>Upload</button>
                 </label>
-                <form onSubmit={this.formSubmission} id="AdminForm">
+                <form onSubmit={this.formSubmission} id="AdminForm" className={Classes.AdminForm}>
                     <label>
                         Title:
                         <input 
@@ -129,7 +137,8 @@ class Admin extends Component {
 const mapStateToProps = state => {
     return {
         adminState: state.adminState,
-        imageUpload: state.imageUpload
+        imageUpload: state.imageUpload,
+        uploadedImages: state.uploadedImages
     }
 }
 
@@ -137,7 +146,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onSubmitForm: (formData) => dispatch(actions.postBlog(formData)),
         onChangeAdminState: (newState) => dispatch(actions.changeAdminState(newState)),
-        onChangeImageUpload: (image) => dispatch(actions.changeImageUpload(image))
+        onChangeImageUpload: (image) => dispatch(actions.changeImageUpload(image)),
+        onImageUploaded: (uploadedImages) => dispatch(actions.updateUploadedImages(uploadedImages))
     }
 }
 

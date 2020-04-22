@@ -18,7 +18,7 @@ const Sidebar = (props) => {
         show={props.showSidebar}
         clicked={props.clicked}/>
       <div className={classes.join(' ')}>
-        <NavigationItems className="SidebarNavigationItems" clicked={props.clicked}/>
+        <NavigationItems className={Classes.SidebarNavigationItems} clicked={props.clicked}/>
       </div>
     </Aux>
   )

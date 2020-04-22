@@ -13,7 +13,7 @@ const FullPost = props => {
         <h5>{state.date}</h5>
         <p>{state.content}</p>
         <div className={Classes.OtherImages}>
-          {state.otherImages.map(image => <img src={image} alt="" key={image} className="OtherImage"/>)}
+          {state.otherImages.map(image => <img src={image} alt="" key={image} className={Classes.OtherImage}/>)}
         </div>
         <h1>More Posts</h1>
       </Aux>

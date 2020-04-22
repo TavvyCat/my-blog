@@ -4,5 +4,6 @@ export {
     fetchGalleryData,
     postBlog,
     changeAdminState,
-    changeImageUpload
+    changeImageUpload,
+    updateUploadedImages
 } from './actionCreators'

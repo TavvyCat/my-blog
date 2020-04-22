@@ -1,3 +1,10 @@
+.Paragraph {
+  padding: 20px;
+}
+.Paragraph p {
+  font-family: cursive;
+  font-size: 2em;
+}
 .Paragraph img {
   width: 20vw;
   height: auto;
@@ -12,14 +19,17 @@
   float: right;
   clear: right;
 }
-.Paragraph h2, h3 {
+.Paragraph h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
   font-family: "Lobster", cursive;
-  justify-content: center;
+  text-align: center;
+  font-size: 32px;
 }
-.Paragraph h2.Left, h3.Left {
+.Paragraph h2.Left {
   clear: right;
 }
-.Paragraph h2.Right, h3.Right {
+.Paragraph h2.Right {
   clear: left;
 }
 .Paragraph p.Right {
@@ -31,5 +41,8 @@
   .Paragraph img {
     width: 40vw;
     margin: 10px;
+  }
+  .Paragraph p {
+    font-size: 1em;
   }
 }

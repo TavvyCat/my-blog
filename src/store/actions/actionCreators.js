@@ -105,3 +105,9 @@ export const changeImageUpload = (image) => {
         image: image
     }
 }
+export const updateUploadedImages = (uploadedImages) => {
+    return {
+        type: actionTypes.UPDATE_UPLOADED_IMAGES,
+        uploadedImages: uploadedImages
+    }
+}

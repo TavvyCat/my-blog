@@ -15,7 +15,8 @@ const initialState = {
         otherImages: [],
         date: `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`
     },
-    imageUpload: null
+    imageUpload: null,
+    uploadedImages: []
 };
 
 const reducer = ( state = initialState, action ) => {
@@ -36,6 +37,8 @@ const reducer = ( state = initialState, action ) => {
         case actionTypes.POST_BLOG_SUCCESS:
             alert("Post successful!");
             return updateObject(state, {adminState: {...state.adminState, titleImage: "", otherImages: []}});
+        case actionTypes.UPDATE_UPLOADED_IMAGES:
+            return updateObject(state, {uploadedImages: action.uploadedImages})
         default: return state;
     }
 };
