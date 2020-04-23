@@ -13,22 +13,24 @@ class QuoteOfTheWeek extends Component {
 
   render() {
     let quotes = this.props.currentQuote && this.props.previousQuotes ? (
-      <Aux>
-          <h1 >Quote of the Week</h1>
-          <div className={Classes.FullQuote}>
-              <p>&ldquo;  {this.props.currentQuote.quote.quote}  &rdquo;</p>
-              <h1>- {this.props.currentQuote.quote.person}</h1>
-          </div>
-          <h2 >Previous Quotes</h2>
-          <div className={Classes.PreviousQuotes}>
-              {this.props.previousQuotes.map(quote => (
+      <div className={Classes.Quotes}>
+        <Aux>
+            <h1 >Quote of the Week</h1>
+            <div className={Classes.FullQuote}>
+                <p>&ldquo;  {this.props.currentQuote.quote.quote}  &rdquo;</p>
+                <h1>- {this.props.currentQuote.quote.person}</h1>
+            </div>
+            <h2 >Previous Quotes</h2>
+            <div className={Classes.PreviousQuotes}>
+                {this.props.previousQuotes.map(quote => (
                   <div className={Classes.PreviousQuote} key={quote.id}>
-                      <p>&ldquo;  {quote.quote}  &rdquo;</p>
-                      <h1>- {quote.person}</h1>
-                  </div>
-            ))}
-          </div>
-      </Aux>
+                        <p>&ldquo;  {quote.quote}  &rdquo;</p>
+                        <h1>- {quote.person}</h1>
+                    </div>
+              ))}
+            </div>
+        </Aux>
+      </div>
     ) : null;
     return quotes;
   }

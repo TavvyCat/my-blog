@@ -1,3 +1,7 @@
+.Quotes {
+  height: 100%;
+  width: 100%;
+}
 .FullQuote {
   border: 5px groove rgb(12, 180, 172);
   box-shadow: 0 10px 15pxpx grey;

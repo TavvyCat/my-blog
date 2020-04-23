@@ -25,14 +25,15 @@ class Gallery extends Component {
     const images = shuffledImages ? (
       <div className={Classes.Gallery}>
         {shuffledImages.map(image => (
-          <div className={Classes.GalleryImageContainer} key={image.imgURL}
+          <div 
+            className={Classes.GalleryImageContainer} 
+            key={image.imgURL}
             style={{width: `${image.width}px`}}>
             <img className={Classes.GalleryImage} src={image.imgURL} alt=""/>
           </div>
         ))}
       </div>
     ) : null;
-    console.log(this.props.images);
     return (
       <div>
         {images}

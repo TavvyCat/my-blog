@@ -6,8 +6,8 @@
   font-size: 2em;
 }
 .Paragraph img {
-  width: 20vw;
-  height: auto;
+  height: 20vw;
+  width: auto;
   border-radius: 50%;
   margin: 20px;
 }
@@ -39,7 +39,7 @@
 
 @media (max-width: 500px) {
   .Paragraph img {
-    width: 40vw;
+    height: 40vw;
     margin: 10px;
   }
   .Paragraph p {
