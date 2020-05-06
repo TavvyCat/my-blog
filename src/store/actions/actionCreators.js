@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import Axios from '../../Axios';
+import axios from 'axios';
 
 // BLOG DATA
 export const fetchBlogDataSuccess = (data) => {
@@ -87,7 +88,7 @@ export const postBlog = (blogData) => {
            }
        })
        .catch(error => {
-           console.log(error);
+           console.log(error.response.data.error);
        });
     }
 }
@@ -105,9 +106,74 @@ export const changeImageUpload = (image) => {
         image: image
     }
 }
-export const updateUploadedImages = (uploadedImages) => {
+export const updateUploadedImages = (imgURL) => {
     return {
         type: actionTypes.UPDATE_UPLOADED_IMAGES,
-        uploadedImages: uploadedImages
+        imgURL: imgURL
+    }
+}
+
+// Authorization
+export const logout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('expirationDate');
+    return {
+        type: actionTypes.AUTH_LOGOUT
+    }
+}
+export const checkLoginTimeout = (expirationTime) => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(logout())
+        }, +expirationTime * 1000)
+    };
+}
+export const loginSuccess = (token, userId) => {
+    return {
+        type: actionTypes.LOG_IN_SUCCESS,
+        token: token,
+        userId: userId
+    }
+}
+export const checkLoginState = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            dispatch(logout());
+        } else {
+            const expirationDate = new Date(localStorage.getItem('expirationDate'));
+            if (expirationDate <= new Date()) {
+                dispatch(logout());
+            } else {
+                const userId = localStorage.getItem('userId');
+                dispatch(loginSuccess(token, userId));
+                dispatch(checkLoginTimeout((expirationDate.getTime() - new Date().getTime()) / 1000))
+            }
+        }
+    }
+}
+export const login = (email, password) => {
+    return dispatch => {
+        const authData = {
+            email: email,
+            password: password,
+            returnSecureToken: true
+        }
+        axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA5UiiS5fTo0PWQ0p5puIouAXOglOG5QuA', authData)
+        .then(response => {
+            const token = response.data.idToken;
+            const userId = response.data.localId;
+            const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
+            localStorage.setItem('token', token);
+            localStorage.setItem('userId', userId);
+            localStorage.setItem('expirationDate', expirationDate);
+            dispatch(loginSuccess(token, userId));
+            dispatch(checkLoginTimeout(response.data.expiresIn));
+            console.log(response);
+        })
+        .catch(error => {
+            alert(error.response.data.error)
+        });
     }
 }

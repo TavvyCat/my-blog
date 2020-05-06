@@ -6,10 +6,15 @@ import Classes from './Admin.css';
 import withErrorHandler from '../../HOC/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
 import { updateObject } from '../../store/utility';
+import { Redirect } from 'react-router-dom';
 
 class Admin extends Component {
     state = {
         progress: 0
+    }
+
+    componentDidMount() {
+        this.props.onTryAutoSignIn();
     }
 
     formSubmission = event => {
@@ -55,14 +60,12 @@ class Admin extends Component {
                 // Complete function
                 storage.ref('Gallery').child(image.name).getDownloadURL()
                 .then(URL => {
-                    const imageData = { imgURL: URL, width: "400"}
-                    const images = [this.props.uploadedImages.push(imageData)];
-                    this.props.onImageUploaded(images);
+                    const imageData = { imgURL: URL, name: image.name, width: "400"}
+                    this.props.onImageUploaded(URL);
                     this.imgSelectedHandler(URL);
-                    Axios.post('/Gallery.json', imageData);
+                    Axios.post(`/Gallery.json?auth=${this.props.token}`, imageData);
                 })
             })
-        
     }
     
     inputChangeHandler = event => {
@@ -77,18 +80,20 @@ class Admin extends Component {
     }
 
     render() {
+        const authRedirect = !this.props.isAuthenticated ? <Redirect to='/login' /> : null;
         const progressBar = this.state.progress ? 
             <progress value={this.state.progress} max="100" /> : null;
-        const uploadedImages = this.props.uploadedImages;
         const images = this.props.uploadedImages ? (
             <div>
-                {uploadedImages.map(image => 
-                    <img src={image.imgURL} alt="Uploaded File" key={image.imgURL} />
+                {this.props.uploadedImages.map(image => 
+                    <img src={image.imgURL} alt="Uploaded File" key={Math.random()} />
                 )}
             </div> 
         ) : null;
+        console.log(this.props.uploadedImages);
         return (
             <div className={Classes.Admin}>
+                {authRedirect}
                 <label>
                     Images:
                     {progressBar}
@@ -138,7 +143,9 @@ const mapStateToProps = state => {
     return {
         adminState: state.adminState,
         imageUpload: state.imageUpload,
-        uploadedImages: state.uploadedImages
+        uploadedImages: state.uploadedImages,
+        isAuthenticated: state.token !== null,
+        token: state.token
     }
 }
 
@@ -147,7 +154,8 @@ const mapDispatchToProps = dispatch => {
         onSubmitForm: (formData) => dispatch(actions.postBlog(formData)),
         onChangeAdminState: (newState) => dispatch(actions.changeAdminState(newState)),
         onChangeImageUpload: (image) => dispatch(actions.changeImageUpload(image)),
-        onImageUploaded: (uploadedImages) => dispatch(actions.updateUploadedImages(uploadedImages))
+        onImageUploaded: (imgURL) => dispatch(actions.updateUploadedImages(imgURL)),
+        onTryAutoSignIn: () => dispatch(actions.checkLoginState())
     }
 }
 

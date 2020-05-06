@@ -1,0 +1,60 @@
+.Auth {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-justify: center;
+    align-items: center;
+}
+.Auth label {
+    text-align: center;
+}
+.Auth input {
+    text-align: center;
+    outline: none;
+    border: 1px solid #ccc;
+    background-color: white;
+    font: inherit;
+    padding: 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+.Auth input:focus {
+    outline: none;
+    background-color: #ccc;
+}
+.Modal {
+    position: fixed;
+    z-index: 500;
+    background-color: rgb(13, 171, 219);
+    width: 70%;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    left: 15%;
+    top: 100px;
+    box-sizing: border-box;
+}
+.Auth button {
+    display: block;
+    justify-content: center;
+    background-color: white;
+    border: none;
+    color: black;
+    outline: none;
+    cursor: pointer;
+    font: inherit;
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+}
+.Auth form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Invalid {
+    border: 1px solid red;
+    box-sizing: border-box;
+    background-color: #FDA49A;
+}
