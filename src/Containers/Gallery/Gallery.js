@@ -10,21 +10,16 @@ class Gallery extends Component {
     this.props.onFetchGallery();
   }
 
-  shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-    return array;
+  shouldComponentUpdate(prevProps, prevState) {
+    if (prevProps.images === this.props.images) {
+      return false;
+    } else return true
   }
 
   render() {
-    const shuffledImages = this.props.images ? this.shuffleArray(this.props.images) : null;
-    const images = shuffledImages ? (
+    const images = this.props.images ? (
       <div className={Classes.Gallery}>
-        {shuffledImages.map(image => (
+        {this.props.images.map(image => (
           <div 
             className={Classes.GalleryImageContainer} 
             key={image.imgURL}

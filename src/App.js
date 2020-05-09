@@ -18,9 +18,7 @@ class App extends Component {
 
   render() {
     return (
-      <div 
-        className="App"
-        style={{ backgroundColor: "lavender"}}>
+      <div className="App">
         <Sidebar 
           showSidebar={this.state.showSidebar}
           clicked={() => this.sidebarToggleHandler()} />

@@ -1,24 +1,27 @@
 .GalleryImage {
     height: 100%;
     width: 100%;
+    border-radius: 5px;
 }
 .GalleryImageContainer {
     float: left;
     height: 300px;
     width: fit-content;
-    border: 2px solid black;
+    box-sizing: content-box;
     padding: 0;
     margin: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(15, 15, 15, 0.5) 0px 2px 5px 0px;
 }
 .Gallery {
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    background: url(https://firebasestorage.googleapis.com/v0/b/adventure-blog-286e8.appspot.com/o/BackgroundImages%2FForestBackground.jpg?alt=media&token=d6cb6d6a-496e-4bd4-b3f8-9610338a3c0a) 
+    /* background: url(https://firebasestorage.googleapis.com/v0/b/adventure-blog-286e8.appspot.com/o/BackgroundImages%2FForestBackground.jpg?alt=media&token=d6cb6d6a-496e-4bd4-b3f8-9610338a3c0a) 
         no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover; */
 }

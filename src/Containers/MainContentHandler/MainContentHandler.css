@@ -4,3 +4,29 @@
     text-align: center;
     padding-top: 50px;
 }
+
+.transitionGroup {
+    position: relative;
+}
+
+.routeSection {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.Enter {
+    opacity: 0.01;
+}
+.EnterActive {
+    opacity: 1;
+    transition: opacity 1000ms ease-in;
+}
+.Exit {
+    opacity: 1;
+}
+.ExitActive {
+    opacity: 0.01;
+    transition: opacity 1000ms ease-in;
+}

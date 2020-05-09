@@ -67,6 +67,12 @@ export const fetchGalleryData = () => {
                 images.push({
                     ...response.data[key]
             })};
+        for (var i = images.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = images[i];
+            images[i] = images[j];
+            images[j] = temp;
+        }
         dispatch(fetchGalleryDataSuccess(images));
     })
         .catch(error => console.log(error))
@@ -173,7 +179,7 @@ export const login = (email, password) => {
             console.log(response);
         })
         .catch(error => {
-            alert(error.response.data.error)
+            alert(error.response.data.error.message)
         });
     }
 }
