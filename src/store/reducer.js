@@ -16,7 +16,7 @@ const initialState = {
         date: `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`
     },
     imageUpload: null,
-    uploadedImages: [],
+    uploadedImage: '',
     token: null,
     userId: null
 };
@@ -43,7 +43,7 @@ const reducer = ( state = initialState, action ) => {
             alert("Post successful!");
             return updateObject(state, {adminState: {...state.adminState, titleImage: "", otherImages: []}});
         case actionTypes.UPDATE_UPLOADED_IMAGES:
-            return updateObject(state, {uploadedImages: state.uploadedImages.push(action.imageURL)})
+            return updateObject(state, {uploadedImage: action.newUploadedImage})
 
         case actionTypes.LOG_IN_SUCCESS:
             return updateObject(state, {token: action.token, userId: action.userId})

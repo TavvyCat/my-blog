@@ -87,14 +87,13 @@ export const postBlogSuccess = () => {
 }
 export const postBlog = (blogData) => {
     return dispatch => {
-       Axios.post(`/blog.json`, blogData)
+       Axios.post(`/Blog.json`, blogData)
        .then(response => {
-           if (response.status >= 200) {
-               dispatch(postBlogSuccess());
-           }
+            console.log(response);
+            dispatch(postBlogSuccess());
        })
        .catch(error => {
-           console.log(error.response.data.error);
+           console.log(error);
        });
     }
 }
@@ -112,10 +111,10 @@ export const changeImageUpload = (image) => {
         image: image
     }
 }
-export const updateUploadedImages = (imgURL) => {
+export const updateUploadedImage = (imgURL) => {
     return {
         type: actionTypes.UPDATE_UPLOADED_IMAGES,
-        imgURL: imgURL
+        newUploadedImage: imgURL
     }
 }
 

@@ -5,7 +5,7 @@ export {
     postBlog,
     changeAdminState,
     changeImageUpload,
-    updateUploadedImages,
+    updateUploadedImage,
     login,
     checkLoginState
 } from './actionCreators'

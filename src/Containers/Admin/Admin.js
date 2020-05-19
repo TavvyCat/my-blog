@@ -83,21 +83,15 @@ class Admin extends Component {
         const authRedirect = !this.props.isAuthenticated ? <Redirect to='/login' /> : null;
         const progressBar = this.state.progress ? 
             <progress value={this.state.progress} max="100" /> : null;
-        const images = this.props.uploadedImages ? (
-            <div>
-                {this.props.uploadedImages.map(image => 
-                    <img src={image.imgURL} alt="Uploaded File" key={Math.random()} />
-                )}
-            </div> 
-        ) : null;
-        console.log(this.props.uploadedImages);
         return (
             <div className={Classes.Admin}>
                 {authRedirect}
                 <label>
                     Images:
                     {progressBar}
-                    {images}
+                    <img 
+                        src={this.props.uploadedImage} alt="" 
+                        style={{ width: '300px', height: 'auto'}} />
                     <input 
                         name="imageUpload"
                         type="file" 
@@ -143,7 +137,7 @@ const mapStateToProps = state => {
     return {
         adminState: state.adminState,
         imageUpload: state.imageUpload,
-        uploadedImages: state.uploadedImages,
+        uploadedImage: state.uploadedImage,
         isAuthenticated: state.token !== null,
         token: state.token
     }
@@ -154,7 +148,7 @@ const mapDispatchToProps = dispatch => {
         onSubmitForm: (formData) => dispatch(actions.postBlog(formData)),
         onChangeAdminState: (newState) => dispatch(actions.changeAdminState(newState)),
         onChangeImageUpload: (image) => dispatch(actions.changeImageUpload(image)),
-        onImageUploaded: (imgURL) => dispatch(actions.updateUploadedImages(imgURL)),
+        onImageUploaded: (imgURL) => dispatch(actions.updateUploadedImage(imgURL)),
         onTryAutoSignIn: () => dispatch(actions.checkLoginState())
     }
 }
