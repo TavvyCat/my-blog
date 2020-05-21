@@ -37,6 +37,10 @@
   text-align: right;
   clear: left;
 }
+.Paragraph p.Left {
+  text-align: left;
+  clear: right;
+}
 
 @media (max-width: 1000px) {
   .Paragraph {
