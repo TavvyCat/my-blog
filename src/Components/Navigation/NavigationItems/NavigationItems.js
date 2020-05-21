@@ -3,7 +3,7 @@ import NavigationItem from '../NavigationItem/NavigationItem';
 
 const NavigationItems = (props) => (
   <div className={props.className} onClick={props.clicked}>
-    <NavigationItem 
+    <NavigationItem
       link="our-story"
       title="Our Story" />
     <NavigationItem 

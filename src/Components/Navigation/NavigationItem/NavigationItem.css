@@ -1,14 +1,14 @@
 .NavigationItem {
-  box-sizing: border-box;
   display: flex;
   text-decoration: none;
+  box-sizing: border-box;
   color: Black;
   height: 100%;
   width: 100%;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   text-align: center;
+  cursor: pointer;
 }
 
 .NavigationItem:hover,

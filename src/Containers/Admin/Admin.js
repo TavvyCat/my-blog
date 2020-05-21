@@ -14,7 +14,9 @@ class Admin extends Component {
     }
 
     componentDidMount() {
-        this.props.onTryAutoSignIn();
+        if (!this.props.isAuthenticated) {
+            this.props.onTryAutoSignIn();
+        }
     }
 
     formSubmission = event => {
@@ -22,7 +24,7 @@ class Admin extends Component {
         const formData = {
             ...this.props.adminState
         }
-        this.props.onSubmitForm(formData);
+        this.props.onSubmitForm(formData, this.props.token);
     }
 
     updateOtherImagesHandler = (URL) => {
@@ -45,7 +47,7 @@ class Admin extends Component {
 
     imgUploadHandler = () => {
         const image = this.props.imageUpload;
-        const uploadTask = storage.ref(`Gallery/${image.name}`).put(image);
+        const uploadTask = storage.ref(`/Gallery/${image.name}`).put(image);
         uploadTask.on('state_changed',
             (snapshot) => {
                 // Progress function
@@ -139,13 +141,14 @@ const mapStateToProps = state => {
         imageUpload: state.imageUpload,
         uploadedImage: state.uploadedImage,
         isAuthenticated: state.token !== null,
-        token: state.token
+        token: state.token,
+        userId: state.userId
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmitForm: (formData) => dispatch(actions.postBlog(formData)),
+        onSubmitForm: (formData, token) => dispatch(actions.postBlog(formData, token)),
         onChangeAdminState: (newState) => dispatch(actions.changeAdminState(newState)),
         onChangeImageUpload: (image) => dispatch(actions.changeImageUpload(image)),
         onImageUploaded: (imgURL) => dispatch(actions.updateUploadedImage(imgURL)),

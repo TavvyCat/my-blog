@@ -11,7 +11,7 @@ export const fetchBlogDataSuccess = (data) => {
 }
 export const fetchBlogData = () => {
     return dispatch => {
-        Axios.get('/blog.json')
+        Axios.get('/Blog.json')
         .then(response => {
             const data = [];
             for (let blog in response.data) {
@@ -81,16 +81,19 @@ export const fetchGalleryData = () => {
 
 // POST BLOG
 export const postBlogSuccess = () => {
+    alert('Post successful!');
     return {
         type: actionTypes.POST_BLOG_SUCCESS
     }
 }
-export const postBlog = (blogData) => {
+export const postBlog = (blogData, token) => {
     return dispatch => {
-       Axios.post(`/Blog.json`, blogData)
+       Axios.post(`/Blog.json?auth=${token}`, blogData)
        .then(response => {
-            console.log(response);
-            dispatch(postBlogSuccess());
+           if (response.status > 300) {
+               console.log(response);
+               dispatch(postBlogSuccess());
+           }
        })
        .catch(error => {
            console.log(error);
@@ -133,8 +136,9 @@ export const checkLoginTimeout = (expirationTime) => {
             dispatch(logout())
         }, +expirationTime * 1000)
     };
-}
+};
 export const loginSuccess = (token, userId) => {
+    alert('You have successfully logged in');
     return {
         type: actionTypes.LOG_IN_SUCCESS,
         token: token,

@@ -10,8 +10,8 @@ class Gallery extends Component {
     this.props.onFetchGallery();
   }
 
-  shouldComponentUpdate(prevProps, prevState) {
-    if (prevProps.images === this.props.images) {
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.images === this.props.images) {
       return false;
     } else return true
   }

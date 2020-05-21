@@ -8,12 +8,18 @@ const FullPost = props => {
   return (
     <div className={Classes.FullPost}>
       <Aux>
-        <img src={state.titleImage} alt="" />
+        <div className={Classes.TitleImageConatiner}>
+          <img src={state.titleImage} alt="" className={Classes.TitleImage}/>
+        </div>
         <h2>{state.title}</h2>
         <h5>{state.date}</h5>
         <p>{state.content}</p>
         <div className={Classes.OtherImages}>
-          {state.otherImages.map(image => <img src={image} alt="" key={image} className={Classes.OtherImage}/>)}
+          {state.otherImages.map(image => (
+            <div className={Classes.OtherImageContainer}>
+              <img src={image} alt="" key={image} className={Classes.OtherImage}/>
+            </div>
+          ))}
         </div>
         <h1>More Posts</h1>
       </Aux>

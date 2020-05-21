@@ -1,5 +1,5 @@
 .Paragraph {
-  padding: 20px;
+  padding: 20px 0;
 }
 .Paragraph p {
   font-family: cursive;
@@ -38,21 +38,30 @@
   clear: left;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1000px) {
+  .Paragraph {
+    text-align: center;
+    width: 100vw;
+
+  }
   .Paragraph img {
     height: 30vh;
-    margin: 10px;
+    margin: 0px 10px;
+    text-align: center;
   }
   .Paragraph img.Left {
     float: none;
     clear: none;
+    text-align: center;
   }
   .Paragraph img.Right {
     float: none;
     clear: none;
+    text-align: center;
   }
   .Paragraph p {
     font-size: 1em;
+    text-align: center;
   }
   .Paragraph h2.Left {
     clear: none;

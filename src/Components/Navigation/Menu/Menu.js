@@ -9,8 +9,11 @@ const Menu = (props) => {
         className={Classes.sidebarOpener}
         onClick={props.clicked}>
         <i id={Classes.bars}className="fas fa-bars"></i>
-        MENU
       </div>
+      <img 
+        src="https://firebasestorage.googleapis.com/v0/b/adventure-blog-286e8.appspot.com/o/UI%2F300x100-blog-logo.jpg?alt=media&token=12d04092-ba48-488f-8f18-72592efe4c6c"
+        alt="Therapy Nomads"
+      />
       <NavigationItems className={Classes.MenuNavigationItems}/>
     </header>
   )

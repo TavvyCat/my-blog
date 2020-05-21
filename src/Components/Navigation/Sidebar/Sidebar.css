@@ -9,12 +9,14 @@
   box-sizing: border-box;
   transition: transform 0.3s ease-out;
 }
+
 .Open {
   transform: translateX(0);
 }
 .Closed {
   transform: translateX(-100%);
 }
+
 .SidebarNavigationItems {
   margin-top: 50px;
   width: 100%;
@@ -22,6 +24,17 @@
   display: flex;
   flex-direction: column;
 }
+
+.Sidebar img{
+  box-sizing: border-box;
+  color: Black;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .SidebarNavigationItems * {
   padding: 20px 20px;
 }
