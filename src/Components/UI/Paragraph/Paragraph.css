@@ -27,20 +27,7 @@
   text-align: center;
   font-size: 32px;
 }
-.Paragraph h2.Left {
-  clear: right;
-}
-.Paragraph h2.Right {
-  clear: left;
-}
-.Paragraph p.Right {
-  text-align: right;
-  clear: left;
-}
-.Paragraph p.Left {
-  text-align: left;
-  clear: right;
-}
+
 
 @media (max-width: 1000px) {
   .Paragraph {

@@ -4,7 +4,7 @@ import Classes from './Menu.css';
 
 const Menu = (props) => {
   return (
-    <header className={Classes.Menu}>
+    <div className={Classes.Menu}>
       <div 
         className={Classes.sidebarOpener}
         onClick={props.clicked}>
@@ -15,7 +15,7 @@ const Menu = (props) => {
         alt="Therapy Nomads"
       />
       <NavigationItems className={Classes.MenuNavigationItems}/>
-    </header>
+    </div>
   )
 }
 

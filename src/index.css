@@ -4,8 +4,8 @@ body {
   font-family: sans-serif;
   width: 100%;
 }
-@media (max-width: 500px) {
-  html {
-    width: 100%;
-  }
+
+html {
+  width: 100vw;
+  overflow-x: hidden;
 }

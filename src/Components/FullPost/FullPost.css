@@ -22,14 +22,16 @@
 }
 .FullPost {
     white-space: pre-wrap;
+    width: 100%;
 }
 
 .OtherImage {
+    max-width: 90%;
     height: 300px;
     width: auto;
     box-shadow: 0 1px 2px 0 black;
     border-radius: 1%;
-    margin: 20px;
+    margin: 20px 0;
 }
 .OtherImages {
     display: flex;
