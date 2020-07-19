@@ -17,7 +17,7 @@ const OurStory = () => (
       float="left"
       content="Let’s just say when we got married in October of 2018, we were planning on being in Nashville for several years, at least until Tavish graduated from a local college with a degree in Biblical Studies in May 2020, but things changed. After two years of bible school, Tavish chose to leave that education behind and teach himself a whole new skill set. A close friend of Elizabeth’s, Crystal, was an Occupational Therapist who was moving to California to start her travelling career and we decided to follow with a desire to see the United States while growing closer together."/>
     <Paragraph 
-      imgURL="https://firebasestorage.googleapis.com/v0/b/adventure-blog-286e8.appspot.com/o/OurStory%2FPic-02.jpg?alt=media&token=15e149fc-a73a-40be-9b3b-d8bb5154c3d7"
+      imgURL="https://firebasestorage.googleapis.com/v0/b/adventure-blog-286e8.appspot.com/o/OurStory%2Fall-packed-up.jpg?alt=media&token=f2d2e28d-b627-4431-a7d1-cea71af49893"
       headerContent=""
       alt=""
       float="right"
