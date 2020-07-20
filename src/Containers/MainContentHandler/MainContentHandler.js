@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { Container } from 'reactstrap';
 
 import OurStory from '../OurStory/OurStory';
 import Blog from '../Blog/Blog';
@@ -11,7 +12,11 @@ import { Container } from 'reactstrap';
 
 const MainContentHandler = (props) => (
   <Container>
+<<<<<<< Updated upstream
     <TransitionGroup>
+=======
+    <TransitionGroup className={Classes.transitionGroup}>
+>>>>>>> Stashed changes
       <CSSTransition
         key={props.location.key}
         timeout={1000}

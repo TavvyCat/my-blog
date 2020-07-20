@@ -1,13 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import Classes from './NavigationItem.css';
+import { NavItem, NavLink } from 'reactstrap';
 
 const NavigationItem = (props) => (
-  <NavLink
-    className={Classes.NavigationItem}
-    to={`/${props.link}`}>
-    {props.title}
-  </NavLink>
+  <NavItem className="list-group-item active">
+    <NavLink className="text-decoration-none" href={`/${props.link}`}>
+      {props.title}
+    </NavLink>
+  </NavItem>
 )
 
 export default NavigationItem;

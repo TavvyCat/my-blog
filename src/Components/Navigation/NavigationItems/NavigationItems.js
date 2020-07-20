@@ -1,8 +1,9 @@
 import React from 'react';
 import NavigationItem from '../NavigationItem/NavigationItem';
+import { Nav } from 'reactstrap';
 
 const NavigationItems = (props) => (
-  <div className={props.className} onClick={props.clicked}>
+  <Nav className="list-unstyled" onClick={props.clicked}>
     <NavigationItem
       link="our-story"
       title="Our Story" />
@@ -18,7 +19,7 @@ const NavigationItems = (props) => (
     <NavigationItem 
       link="forum"
       title="Forum" />
-  </div>
+  </Nav>
 )
 
 export default NavigationItems;
