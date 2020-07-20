@@ -2,28 +2,28 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-import Classes from './MainContentHandler.css';
 import OurStory from '../OurStory/OurStory';
 import Blog from '../Blog/Blog';
 import Forum from '../Forum/Forum';
 import Gallery from '../Gallery/Gallery';
 import QuoteOfTheWeek from '../QuoteOfTheWeek/QuoteOfTheWeek';
+import { Container } from 'reactstrap';
 
 const MainContentHandler = (props) => (
-  <div className={Classes.MainContentHandler}>
-    <TransitionGroup className={Classes.transitionGroup}>
+  <Container>
+    <TransitionGroup>
       <CSSTransition
         key={props.location.key}
         timeout={1000}
         mountOnEnter unmountOnExit
         classNames={{
-          enter: Classes.Enter,
-          enterActive: Classes.EnterActive,
-          exit: Classes.Exit,
-          exitActive: Classes.ExitActive
+          enter: { opacity: 0.01 },
+          enterActive: { opacity: 1, transition: "opacity 1000ms ease-in" },
+          exit: { opacity: 1 },
+          exitActive: { opacity: 0.01, transition: "opacity 1000ms ease-in" }
         }}
       >
-        <section className={Classes.routeSection}>
+        <section>
           <Switch location={props.location}>
             <Route path="/our-story" component={OurStory} />
             <Route path="/blog" component={Blog} />
@@ -36,7 +36,7 @@ const MainContentHandler = (props) => (
         </section>
       </CSSTransition>
     </TransitionGroup>
-  </div>
+  </Container>
 )
 
 export default MainContentHandler;
