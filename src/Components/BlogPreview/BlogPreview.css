@@ -1,7 +1,7 @@
 .BlogPreview {
   width: 300px;
-  max-width: 80%;
-  max-height: 500px;
+  max-width: 90vw;
+  height: 525px;
   display: inline-block;
   border: 5px groove rgb(19, 61, 200);
 }
@@ -10,8 +10,9 @@
   width: 100%;
   max-height: 250px;
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   overflow: hidden
 }
 .BlogPreview div img {

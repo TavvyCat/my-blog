@@ -7,6 +7,7 @@ import BlogPreview from '../../Components/BlogPreview/BlogPreview';
 import FullPost from '../../Components/FullPost/FullPost';
 import Classes from './Blog.css';
 import * as actions from '../../store/actions/index';
+import Aux from '../../HOC/AuxComp/AuxComp';
 
 class Blog extends Component {
   componentDidMount() {
@@ -57,10 +58,13 @@ class Blog extends Component {
         </NavLink>
       )) : null;
     return (
-      <div className={Classes.Blog}>
-        <Route path="/blog/:id" component={FullPost} />
-        {postsEl}
-      </div>
+      <Aux>
+        <h1>Blog Posts</h1>
+        <div className={Classes.Blog}>
+          <Route path="/blog/:id" component={FullPost} />
+          {postsEl}
+        </div>
+      </Aux>
     )
   }
 }

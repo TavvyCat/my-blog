@@ -1,15 +1,19 @@
 .Paragraph {
-  padding: 30px;
+  padding: 15px 0;
+  margin: auto;
 }
 .Paragraph p {
-  font-family: cursive;
+  font-family: Helvetica, Arial, sans-serif;;
   font-size: 2em;
+  margin: 0 15px;
+  line-height: 40px;
 }
 .Paragraph img {
   height: 20vw;
+  max-width: 90vw;
   width: auto;
   border-radius: 50%;
-  margin: 20px;
+  margin: 15px auto;
   box-shadow: rgba(20, 20, 20, 0.5) 0px 4px 10px -1px;
 }
 .Paragraph img.Left {
@@ -23,7 +27,7 @@
 .Paragraph h2 {
   margin-top: 0;
   margin-bottom: 20px;
-  font-family: "Lobster", cursive;
+  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   font-size: 32px;
 }
@@ -51,7 +55,7 @@
     text-align: center;
   }
   .Paragraph p {
-    font-size: 1em;
+    font-size: 1.25em;
     text-align: center;
   }
   .Paragraph h2.Left {

@@ -31,6 +31,7 @@ class Gallery extends Component {
     ) : null;
     return (
       <div>
+        <h1>Gallery of Our Adventures</h1>
         {images}
       </div>
     )

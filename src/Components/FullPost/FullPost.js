@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import {animateScroll as scroll} from 'react-scroll'
 import Classes from './FullPost.css';
 import Aux from '../../HOC/AuxComp/AuxComp';
 
 const FullPost = props => {
+  useEffect(() => {
+    scroll.scrollToTop();
+  }, [])
+  
   // let newText = props.location.state.content.split('\n').map((item, i) => <p key={i}>{item}</p>);
   const state = {...props.location.state};
   return (
